@@ -7,4 +7,6 @@ echo 'set timeout=0
           boot
       }' > ../build/x86_64/isofiles/boot/grub/grub.cfg
 grub-mkrescue -o ../build/x86_64/UntitledOS.iso ../build/x86_64/isofiles
+echo 'cleaning up...'
+sleep 1
 rm -rf ../build/x86_64/isofiles
