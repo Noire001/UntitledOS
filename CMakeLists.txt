@@ -37,7 +37,7 @@ set_target_properties(${KERNEL_BIN} PROPERTIES LINK_FLAGS "-n -T ${CMAKE_SOURCE_
 
 
 add_custom_target(${KERNEL_ISO} ALL
-        COMMAND ../generate-iso.sh
+        COMMAND ${CMAKE_SOURCE_DIR}/generate-iso.sh ${CMAKE_SOURCE_DIR}
         COMMENT "Making .iso file"
         BYPRODUCTS ${KERNEL_iso}
         RUNTIME_OUTPUT_DIRECTORY "${OUT}")
