@@ -18,18 +18,16 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_C_STANDARD 17)
 set(CMAKE_C_COMPILER ${TOOLS}/bin/x86_64-elf-gcc)
 set(CMAKE_CXX_COMPILER ${TOOLS}/bin/x86_64-elf-g++)
-#
+
 set(CMAKE_CXX_FLAGS "-ffreestanding -O2 -Wall -Wextra -fno-exceptions -fno-rtti")
 set(CMAKE_C_FLAGS "-ffreestanding -O2 -Wall -Wextra")
-#
-#set($FLAGS "-ffreestanding -mcmodel=large -mno-red-zone -mno-mmx -mno-sse -mno-sse2")
 
 set(KERNEL_BIN "UntitledOS.bin")
 set(KERNEL_ISO ${CMAKE_PROJECT_NAME}.iso)
 
 add_custom_target(build-time-make-directory ALL
         COMMAND ${CMAKE_COMMAND} -E make_directory ${OUT}/kernel)
-add_executable(${KERNEL_BIN} boot/multiboot_header.asm boot/boot.asm)
+add_executable(${KERNEL_BIN} boot/multiboot_header.asm boot/boot.asm boot/long_mode_init.asm)
 set_target_properties(${KERNEL_BIN} PROPERTIES LINK_FLAGS "-n -T ${CMAKE_SOURCE_DIR}/boot/linker.ld"
         RUNTIME_OUTPUT_DIRECTORY "${OUT}/kernel"
         LIBRARY_OUTPUT_DIRECTORY "${OUT}/kernel"
