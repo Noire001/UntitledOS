@@ -28,6 +28,9 @@
 *.exe
 *.out
 *.app
+*.iso
+*.fd
+*.efi
 
 **/cmake-build-debug
 **/CMakeCache.txt
