@@ -14,6 +14,9 @@ set(CMAKE_ASM_NASM_OBJECT_FORMAT elf64)
 set(TOOLS $ENV{HOME}/opt/cross)
 set(OUT ${CMAKE_SOURCE_DIR}/build/${ARCH})
 
+set(CMAKE_CXX_FLAGS "-ffreestanding -O3 -Wall -Wextra -fno-exceptions -fno-rtti -nostdlib -fpermissive")
+set(CMAKE_C_FLAGS "-ffreestanding -O3 -Wall -Wextra -nostdlib -fpermissive")
+
 add_subdirectory(libc)
 add_subdirectory(kernel)
 
@@ -22,8 +25,6 @@ set(CMAKE_C_STANDARD 17)
 set(CMAKE_C_COMPILER ${TOOLS}/bin/x86_64-elf-gcc)
 set(CMAKE_CXX_COMPILER ${TOOLS}/bin/x86_64-elf-g++)
 
-set(CMAKE_CXX_FLAGS "-ffreestanding -O3 -Wall -Wextra -fno-exceptions -fno-rtti -nostdlib -fpermissive")
-set(CMAKE_C_FLAGS "-ffreestanding -O3 -Wall -Wextra -nostdlib -fpermissive")
 
 set(KERNEL_BIN "UntitledOS.bin")
 set(KERNEL_ISO ${CMAKE_PROJECT_NAME}.iso)
