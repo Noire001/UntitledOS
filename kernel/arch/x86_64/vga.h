@@ -25,7 +25,7 @@ static inline uint8_t vga_entry_color(enum vga_color foreground, enum vga_color 
     return foreground | background << 4;
 }
 
-static inline uint16_t vga_entry(unsigned char character, uint8_t color){
-    return (uint16_t) character | (uint16_t) color << 8;
+static inline uint16_t vga_entry(unsigned char uc, uint8_t color) {
+    return (uint16_t) uc | (uint16_t) color << 8;
 }
 #endif //_KERNEL_TTY_H

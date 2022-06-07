@@ -1,4 +1,4 @@
-#include "sys/cdefs.h"
+#include <cdefs.h>
 #include <stddef.h>
 
 #ifndef _STRING_H
