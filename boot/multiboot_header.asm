@@ -8,7 +8,6 @@ header_start:
 
     align 8
     ; insert optional multiboot tags here
-
     ; required end tag
     dw 0    ; type
     dw 0    ; flags

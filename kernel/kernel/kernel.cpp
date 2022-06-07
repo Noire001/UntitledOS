@@ -1,5 +1,6 @@
 #include <stdint.h>
-#include "multiboot2.h"
+#include "../../boot/multiboot2.h"
+#include "../include/kernel/tty.h"
 
 void write_string( int colour, const char *string )
 {
@@ -12,6 +13,7 @@ void write_string( int colour, const char *string )
 }
 
 extern "C" void kernel_main(unsigned long mbi_addr) {
+    terminal_initialize();
     auto addr = mbi_addr;
 
     write_string(0x07, "Hello, Kernel!                       ");
@@ -20,7 +22,7 @@ extern "C" void kernel_main(unsigned long mbi_addr) {
          tag = (struct multiboot_tag *) ((multiboot_uint8_t *) tag + ((tag->size + 7) & ~7))) {
 
         switch (tag->type) {
-
+            //we will parse multiboot2 struct tags here
         }
     }
 }
