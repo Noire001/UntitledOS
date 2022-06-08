@@ -14,8 +14,8 @@ set(CMAKE_ASM_NASM_OBJECT_FORMAT elf64)
 set(TOOLS $ENV{HOME}/opt/cross)
 set(OUT ${CMAKE_SOURCE_DIR}/build/${ARCH})
 
-set(CMAKE_CXX_FLAGS "-ffreestanding -O3 -Wall -Wextra -fno-exceptions -fno-rtti -nostdlib -fpermissive -fstack-protector")
-set(CMAKE_C_FLAGS "-ffreestanding -O3 -Wall -Wextra -nostdlib -fpermissive -fstack-protector")
+set(CMAKE_CXX_FLAGS "-ffreestanding -O3 -Wall -Wextra -fno-exceptions -fno-rtti -nostdlib -fpermissive -fno-stack-protector")
+set(CMAKE_C_FLAGS "-ffreestanding -O3 -Wall -Wextra -nostdlib -fpermissive -fno-stack-protector")
 
 add_subdirectory(libc)
 add_subdirectory(kernel)
