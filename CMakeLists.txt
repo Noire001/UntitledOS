@@ -14,8 +14,8 @@ set(CMAKE_ASM_NASM_OBJECT_FORMAT elf64)
 set(TOOLS $ENV{HOME}/opt/cross)
 set(OUT ${CMAKE_SOURCE_DIR}/build/${ARCH})
 
-set(CMAKE_CXX_FLAGS "-ffreestanding -O3 -Wall -Wextra -fno-exceptions -fno-rtti -nostdlib -fpermissive")
-set(CMAKE_C_FLAGS "-ffreestanding -O3 -Wall -Wextra -nostdlib -fpermissive")
+set(CMAKE_CXX_FLAGS "-ffreestanding -O3 -Wall -Wextra -fno-exceptions -fno-rtti -nostdlib -fpermissive -fstack-protector")
+set(CMAKE_C_FLAGS "-ffreestanding -O3 -Wall -Wextra -nostdlib -fpermissive -fstack-protector")
 
 add_subdirectory(libc)
 add_subdirectory(kernel)
@@ -32,7 +32,7 @@ set(KERNEL_ISO ${CMAKE_PROJECT_NAME}.iso)
 add_custom_target(build-time-make-directory ALL COMMAND ${CMAKE_COMMAND} -E make_directory ${OUT}/kernel)
 
 
-add_executable(${KERNEL_BIN} null.cpp)
+add_executable(${KERNEL_BIN} null.cpp kernel/arch/${ARCH}/multiboot_header.asm)
 
 target_include_directories(${KERNEL_BIN} PUBLIC ${CMAKE_SOURCE_DIR}/libc ${CMAKE_SOURCE_DIR}/kernel)
 
