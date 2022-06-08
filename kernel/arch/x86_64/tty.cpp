@@ -41,10 +41,10 @@ void terminal_scroll(int line) {
 }
 
 void terminal_delete_last_line() {
-    unsigned long line, *ptr;
-    for (line = 0; line < VGA_WIDTH; line++) {
-        ptr = reinterpret_cast<unsigned long *>(0xB8000 * (VGA_WIDTH * 2) * (VGA_HEIGHT - 1) + line);
-        *ptr = 0x0;
+    unsigned long x;
+    for (x = 0; x < VGA_WIDTH; x++) {
+        volatile const size_t index = (VGA_HEIGHT - 1) * VGA_WIDTH + x;
+        terminal_buffer[index] = 0x0;
     }
 }
 
