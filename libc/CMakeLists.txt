@@ -4,7 +4,7 @@ project(libc)
 set(CMAKE_ASM_NASM_OBJECT_FORMAT elf)
 enable_language(ASM_NASM)
 
-add_library(libc STATIC include/string.h include/sys/cdefs.h string/strlen.cpp string/memcmp.cpp string/memmove.cpp include/stdio.h stdio/printf.cpp stdio/putchar.cpp)
+add_library(libc STATIC include/string.h include/sys/cdefs.h string/strlen.cpp string/memcmp.cpp string/memmove.cpp include/stdio.h stdio/printf.cpp stdio/putchar.cpp string/memcpy.cpp)
 target_include_directories(libc PUBLIC
         ${CMAKE_SOURCE_DIR}/kernel/include
         ${CMAKE_SOURCE_DIR}/libc/include

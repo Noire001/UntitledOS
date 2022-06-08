@@ -7,7 +7,7 @@
 extern "C" void kernel_main(unsigned long mbi_addr) {
     terminal_initialize();
     auto addr = mbi_addr;
-    for (int i = 0; i <  20; i++) {
+    for (int i = 0; i <  5000; i++) {
         printf("Hello, kernel World! %d", i);
     }
 
