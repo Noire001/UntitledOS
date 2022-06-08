@@ -13,6 +13,29 @@ static bool print(const char *data, size_t length) {
     return true;
 }
 
+
+void int_to_str(int num, char* str) {
+    int i = 0;
+    if (num == 0) {
+        str[i++] = '0';
+    } else {
+        if (num < 0) {
+            str[i++] = '-';
+            num = -num;
+        }
+        while (num > 0) {
+            str[i++] = (num % 10) + '0';
+            num /= 10;
+        }
+    }
+    str[i] = '\0';
+    for (int j = 0, k = i - 1; j < k; j++, k--) {
+        char tmp = str[j];
+        str[j] = str[k];
+        str[k] = tmp;
+    }
+}
+
 int printf(const char *format, ...) {
     va_list args;
     va_start(args, format);
@@ -61,6 +84,17 @@ int printf(const char *format, ...) {
                 return -1;
             }
             written++;
+        } else if (*format == 'd'){
+            format++;
+            char num_str[32];
+            const int num = va_arg(args, int);
+            int_to_str(num, num_str);
+            if (!max_remaining) {
+                return -1;
+            }
+            if (!print(num_str, strlen(num_str))) {
+                return -1;
+            }
         } else {
             format = format_begun_at;
             size_t length = strlen(format);
